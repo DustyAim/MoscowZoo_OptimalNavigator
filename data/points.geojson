@@ -3,7 +3,7 @@
 "name": "points",
 "features": [
 { "type": "Feature", "properties": { "osm_id": "-42429", "name": "Капибара", "other_tags": "\"attraction\"=>\"animal\",\"is_in:zoo\"=>\"Московский зоопарк\"" }, "geometry": { "type": "Point", "coordinates": [ 37.5788456, 55.7615017 ] } },
-{ "type": "Feature", "properties": { "osm_id": "-42430", "name": "Викуья", "other_tags": "\"attraction\"=>\"animal\",\"is_in:zoo\"=>\"Московский зоопарк\"" }, "geometry": { "type": "Point", "coordinates": [ 37.5786985, 55.7617206 ] } },
+{ "type": "Feature", "properties": { "osm_id": "-42430", "name": "Викунья", "other_tags": "\"attraction\"=>\"animal\",\"is_in:zoo\"=>\"Московский зоопарк\"" }, "geometry": { "type": "Point", "coordinates": [ 37.5786985, 55.7617206 ] } },
 { "type": "Feature", "properties": { "osm_id": "-42432", "name": "Лама", "other_tags": "\"attraction\"=>\"animal\",\"is_in:zoo\"=>\"Московский зоопарк\"" }, "geometry": { "type": "Point", "coordinates": [ 37.5787197, 55.7617814 ] } },
 { "type": "Feature", "properties": { "osm_id": "-42433", "name": "Гигантский муравьед", "other_tags": "\"attraction\"=>\"animal\",\"is_in:zoo\"=>\"Московский зоопарк\"" }, "geometry": { "type": "Point", "coordinates": [ 37.5788483, 55.7620377 ] } },
 { "type": "Feature", "properties": { "osm_id": "-42434", "name": "Паламедея хохлатая", "other_tags": "\"attraction\"=>\"animal\",\"is_in:zoo\"=>\"Московский зоопарк\"" }, "geometry": { "type": "Point", "coordinates": [ 37.5788532, 55.7620864 ] } },
