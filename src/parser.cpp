@@ -26,7 +26,7 @@ std::unordered_map<std::string, std::string> parse_other_tags(const std::string&
 json load_json(const std::string& filename){
     std::ifstream file(filename);
     if (!file.is_open()){
-        throw std::runtime_error("Couldn't open a data file:" + filename);
+        throw std::runtime_error("Couldn't open a full_data file:" + filename);
     }
     // Чтение теперь файла загруженного
     std::string content;

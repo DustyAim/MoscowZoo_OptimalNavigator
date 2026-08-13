@@ -6811,7 +6811,7 @@ class wide_string_input_adapter
     template<class T>
     std::size_t get_elements(T* /*dest*/, std::size_t /*count*/ = 1)
     {
-        JSON_THROW(parse_error::create(112, 1, "wide string type cannot be interpreted as binary data", nullptr));
+        JSON_THROW(parse_error::create(112, 1, "wide string type cannot be interpreted as binary full_data", nullptr));
     }
 
   private:
@@ -10313,7 +10313,7 @@ class binary_reader
                         - static_cast<number_integer_t>(number));
             }
 
-            // Binary data (0x00..0x17 bytes follow)
+            // Binary full_data (0x00..0x17 bytes follow)
             case 0x40:
             case 0x41:
             case 0x42:
@@ -10338,11 +10338,11 @@ class binary_reader
             case 0x55:
             case 0x56:
             case 0x57:
-            case 0x58: // Binary data (one-byte uint8_t for n follows)
-            case 0x59: // Binary data (two-byte uint16_t for n follow)
-            case 0x5A: // Binary data (four-byte uint32_t for n follow)
-            case 0x5B: // Binary data (eight-byte uint64_t for n follow)
-            case 0x5F: // Binary data (indefinite length)
+            case 0x58: // Binary full_data (one-byte uint8_t for n follows)
+            case 0x59: // Binary full_data (two-byte uint16_t for n follow)
+            case 0x5A: // Binary full_data (four-byte uint32_t for n follow)
+            case 0x5B: // Binary full_data (eight-byte uint64_t for n follow)
+            case 0x5F: // Binary full_data (indefinite length)
             {
                 binary_t b;
                 return get_cbor_binary(b) && sax->binary(b);
@@ -10383,7 +10383,7 @@ class binary_reader
                 return get_cbor_string(s) && sax->string(s);
             }
 
-            // array (0x00..0x17 data items follow)
+            // array (0x00..0x17 full_data items follow)
             case 0x80:
             case 0x81:
             case 0x82:
@@ -10438,7 +10438,7 @@ class binary_reader
             case 0x9F: // array (indefinite length)
                 return get_cbor_array(detail::unknown_size(), tag_handler);
 
-            // map (0x00..0x17 pairs of data items follow)
+            // map (0x00..0x17 pairs of full_data items follow)
             case 0xA0:
             case 0xA1:
             case 0xA2:
@@ -10797,7 +10797,7 @@ class binary_reader
 
         switch (current)
         {
-            // Binary data (0x00..0x17 bytes follow)
+            // Binary full_data (0x00..0x17 bytes follow)
             case 0x40:
             case 0x41:
             case 0x42:
@@ -10826,35 +10826,35 @@ class binary_reader
                 return get_binary(input_format_t::cbor, static_cast<unsigned int>(current) & 0x1Fu, result);
             }
 
-            case 0x58: // Binary data (one-byte uint8_t for n follows)
+            case 0x58: // Binary full_data (one-byte uint8_t for n follows)
             {
                 std::uint8_t len{};
                 return get_number(input_format_t::cbor, len) &&
                        get_binary(input_format_t::cbor, len, result);
             }
 
-            case 0x59: // Binary data (two-byte uint16_t for n follow)
+            case 0x59: // Binary full_data (two-byte uint16_t for n follow)
             {
                 std::uint16_t len{};
                 return get_number(input_format_t::cbor, len) &&
                        get_binary(input_format_t::cbor, len, result);
             }
 
-            case 0x5A: // Binary data (four-byte uint32_t for n follow)
+            case 0x5A: // Binary full_data (four-byte uint32_t for n follow)
             {
                 std::uint32_t len{};
                 return get_number(input_format_t::cbor, len) &&
                        get_binary(input_format_t::cbor, len, result);
             }
 
-            case 0x5B: // Binary data (eight-byte uint64_t for n follow)
+            case 0x5B: // Binary full_data (eight-byte uint64_t for n follow)
             {
                 std::uint64_t len{};
                 return get_number(input_format_t::cbor, len) &&
                        get_binary(input_format_t::cbor, len, result);
             }
 
-            case 0x5F: // Binary data (indefinite length)
+            case 0x5F: // Binary full_data (indefinite length)
             {
                 while (get() != 0xFF)
                 {
@@ -17483,7 +17483,7 @@ class binary_writer
     /*
     @brief write a number to output input
     @param[in] n number of type @a NumberType
-    @param[in] OutputIsLittleEndian Set to true if output data is
+    @param[in] OutputIsLittleEndian Set to true if output full_data is
                                  required to be little endian
     @tparam NumberType the type of the number
 
@@ -20325,11 +20325,11 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
     }
 
     ///////////////////////////
-    // JSON value data types //
+    // JSON value full_data types //
     ///////////////////////////
 
-    /// @name JSON value data types
-    /// The data types to store a JSON value. These types are derived from
+    /// @name JSON value full_data types
+    /// The full_data types to store a JSON value. These types are derived from
     /// the template arguments passed to class @ref basic_json.
     /// @{
 
